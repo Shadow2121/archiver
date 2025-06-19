@@ -1,0 +1,298 @@
+/* Global Styles for Consistency and Light Mode */
+
+:root {
+    /* Color Palette */
+    --primary-color: #007bff; /* Blue for primary actions/branding */
+    --primary-dark: #0056b3;
+    --secondary-color: #6c757d; /* Gray for secondary actions/borders */
+    --secondary-dark: #5a6268;
+    --success-color: #28a745; /* Green for success messages */
+    --error-color: #dc3545;   /* Red for error messages */
+    --info-color: #17a2b8;    /* Cyan for info messages */
+    --light-bg: #f8f9fa;      /* Very light gray for body background */
+    --white-bg: #ffffff;      /* Pure white background for cards/forms */
+    --border-color: #dee2e6;  /* Light border gray */
+    --text-color: #343a40;    /* Dark gray text for readability */
+    --link-color: #007bff;
+    --link-hover-color: #0056b3;
+
+    /* Spacing */
+    --spacing-xs: 5px;
+    --spacing-sm: 10px;
+    --spacing-md: 20px;
+    --spacing-lg: 30px;
+
+    /* Border Radius */
+    --border-radius: 5px;
+
+    /* Box Shadow */
+    --box-shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    --box-shadow-md: 0 0.5rem 1rem rgba(0, 0, 0, 0.1); /* Slightly more prominent */
+}
+
+/* Base Body Styles */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif; /* Consistent clean font */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--light-bg); /* Ensures light background */
+    color: var(--text-color);
+    line-height: 1.6;
+    min-height: 100vh; /* Ensure body takes full viewport height */
+}
+
+/* Main App Container for Centering and Max Width */
+#root, .App {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+    padding: var(--spacing-lg) var(--spacing-sm); /* Add some padding around the main content */
+    box-sizing: border-box;
+    flex-grow: 1; /* Allows app content to fill available space */
+}
+
+/* Consistent Page Container/Card Style for all main components */
+.page-container,
+.login-container,
+.register-container,
+.verify-container,
+.dashboard-container,
+.add-url-page-container,
+.archived-versions-container {
+    background-color: var(--white-bg); /* White background for all content cards */
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow-md); /* Consistent shadow for a 'lifted' look */
+    max-width: 800px; /* Max width for readability */
+    width: 100%; /* Take full width up to max-width */
+    box-sizing: border-box;
+    margin-bottom: var(--spacing-lg); /* Space if multiple containers are stacked */
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--primary-dark);
+    margin-top: 0;
+    margin-bottom: var(--spacing-md);
+    text-align: center; /* Generally center headings within pages */
+}
+
+/* Form Styles - Applied consistently */
+.auth-form, /* For Login, Register, Verify forms */
+.add-url-form { /* For AddUrlPage form */
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm); /* Consistent spacing between form elements */
+    align-items: center; /* Center form elements */
+    width: 100%; /* Forms take full width of their container */
+}
+
+/* Input Fields */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="url"],
+select,
+textarea {
+    width: calc(100% - (2 * var(--spacing-sm))); /* Full width minus padding */
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 1em;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* Subtle focus glow */
+}
+
+/* Buttons - Primary style */
+.btn-primary,
+button { /* This applies default primary styles to all buttons */
+    background-color: var(--primary-color);
+    color: white;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    min-width: 120px; /* Consistent minimum width for buttons */
+    text-align: center;
+}
+
+.btn-primary:hover:not(:disabled),
+button:hover:not(:disabled) {
+    background-color: var(--primary-dark);
+    transform: translateY(-1px); /* Subtle lift on hover */
+}
+
+/* Secondary Button Style (e.g., Cancel, Back) */
+.btn-secondary {
+    background-color: var(--secondary-color);
+}
+
+.btn-secondary:hover:not(:disabled) {
+    background-color: var(--secondary-dark);
+}
+
+/* Danger Button Style (e.g., Sign Out, Delete) */
+.btn-danger {
+    background-color: var(--error-color);
+}
+
+.btn-danger:hover:not(:disabled) {
+    background-color: #c82333; /* Darker red */
+}
+
+/* Disabled Button Styles */
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    opacity: 0.7;
+    transform: none; /* No lift when disabled */
+}
+
+/* Links */
+a {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--link-hover-color);
+    text-decoration: underline;
+}
+
+/* Status/Message Containers */
+.status-message,
+.error-message,
+.success-message {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--border-radius);
+    margin-top: var(--spacing-md);
+    font-size: 0.95em;
+    font-weight: bold;
+    text-align: center;
+    width: calc(100% - (2 * var(--spacing-sm))); /* Match input width */
+    box-sizing: border-box;
+}
+
+.status-message.info {
+    background-color: #e2f4f7; /* Light cyan */
+    color: var(--info-color);
+    border: 1px solid #b8dae6;
+}
+
+.error-message {
+    background-color: #f8d7da; /* Light red */
+    color: var(--error-color);
+    border: 1px solid #f5c6cb;
+}
+
+.success-message {
+    background-color: #d4edda; /* Light green */
+    color: var(--success-color);
+    border: 1px solid #c3e6cb;
+}
+
+
+/* Table Styles */
+.urls-table,
+.versions-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: var(--spacing-md);
+    background-color: var(--white-bg);
+    box-shadow: var(--box-shadow-sm);
+    border-radius: var(--border-radius);
+    overflow: hidden; /* For rounded corners on tables */
+}
+
+.urls-table th,
+.urls-table td,
+.versions-table th,
+.versions-table td {
+    border: 1px solid var(--border-color);
+    padding: var(--spacing-sm) var(--spacing-md);
+    text-align: left;
+}
+
+.urls-table th,
+.versions-table th {
+    background-color: #e9ecef; /* Lighter gray for headers */
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.urls-table tr:nth-child(even),
+.versions-table tr:nth-child(even) {
+    background-color: #f9f9f9; /* Subtle zebra striping */
+}
+
+.urls-table tr:hover,
+.versions-table tr:hover {
+    background-color: #e2e6ea; /* Light hover effect */
+}
+
+/* Specific Adjustments for Dashboard/Page headers to align */
+.dashboard-header-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /* Take full width of container */
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-sm) 0; /* Add some vertical padding */
+}
+
+.dashboard-header-main h2 {
+    margin: 0; /* Remove default margin to align with button */
+    text-align: left; /* Align welcome message to left */
+    flex-grow: 1; /* Allow heading to take available space */
+}
+
+/* Add Link Button (Dashboard) */
+.add-link-button {
+    background-color: var(--success-color); /* Green for 'Add' */
+}
+
+.add-link-button:hover:not(:disabled) {
+    background-color: #218838; /* Darker green */
+}
+
+/* Back button */
+.back-button {
+    background-color: var(--secondary-color); /* Gray for 'Back' */
+    margin-right: var(--spacing-sm);
+}
+
+.back-button:hover:not(:disabled) {
+    background-color: var(--secondary-dark);
+}
+
+/* View Archive Button on Archived Versions Page */
+.view-archive-button {
+    background-color: var(--primary-color); /* Primary blue for 'View Archive' */
+}
+
+.view-archive-button:hover:not(:disabled) {
+    background-color: var(--primary-dark);
+}
+
+/* Styling for the Sign Out button in App.jsx (ensure it aligns with global button styles) */
+.sign-out-button {
+    margin-top: var(--spacing-lg); /* Consistent spacing from content */
+    background-color: var(--error-color); /* Red for 'Sign Out' */
+}
+
+.sign-out-button:hover:not(:disabled) {
+    background-color: #c82333; /* Darker red */
+}

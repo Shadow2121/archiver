@@ -1,0 +1,16 @@
+/* src/components/Dashboard.css */
+
+/* Only keep styles specific to Dashboard layout that are NOT covered by App.css */
+
+/* Example: If you need specific spacing for URLs table actions */
+.dashboard-actions-row {
+    display: flex;
+    gap: var(--spacing-sm); /* Use global spacing variable */
+    justify-content: flex-start; /* Or center/end as needed */
+    margin-top: var(--spacing-sm);
+}
+
+/* If you have any specific text styling or alignment not covered by global styles */
+/* .dashboard-container p {
+    text-align: center;
+} */

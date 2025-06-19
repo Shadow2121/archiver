@@ -1,0 +1,26 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      # Install Node.js if not already available in the CodeBuild environment (optional, depending on image)
+      # - npm install -g n
+      # - n 18 # or specific version like 18 or 20
+      - echo "Installing dependencies..."
+      - npm ci # Use npm ci for clean installs in CI environments
+  build:
+    commands:
+      - echo "Building the React application..."
+      - npm run build # Your standard React build command
+  post_build:
+    commands:
+      - echo "Build completed successfully. Zipping artifacts..."
+      # Create a zip file of the build directory, excluding the build directory itself in the zip path
+      - cd build
+      - zip -r ../build-artifact.zip ./*
+      - cd ..
+
+artifacts:
+  files:
+    - build-artifact.zip # This artifact will be passed to the deploy stage
+  discard-paths: yes # Do not include the buildspec.yml's directory in the artifact path

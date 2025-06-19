@@ -1,0 +1,55 @@
+/* src/components/ArchivedVersionsPage.css */
+
+/* (Keep existing styles from previous steps, and add these new ones) */
+
+/* Highlight row for the currently previewed item */
+.versions-table .highlight-row {
+    background-color: #e6f7ff; /* Light blue background for highlighted row */
+    border-left: 3px solid var(--primary-color);
+}
+
+/* Preview Section Styling */
+.preview-section {
+    margin-top: var(--spacing-lg);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--border-color); /* Separator line */
+    width: 100%;
+}
+
+.preview-section h3 {
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+    color: var(--primary-dark);
+}
+
+.iframe-container {
+    width: 100%;
+    /* Max height to prevent excessively long previews, can be scrolled */
+    max-height: 600px;
+    overflow-y: auto; /* Enable vertical scrolling */
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: var(--white-bg); /* Ensure iframe background is visible */
+}
+
+/* Styles for the iframe itself (can be placed directly in JSX style prop as well) */
+/* .preview-section iframe {
+    width: 100%;
+    height: 500px;
+    border: none;
+    border-radius: var(--border-radius);
+} */
+
+.preview-section .info {
+    text-align: center;
+    font-size: 0.9em;
+    color: var(--secondary-color);
+    margin-top: var(--spacing-sm);
+}
+
+/* If you need specific back button positioning */
+.archived-versions-container .back-button {
+    margin-top: var(--spacing-md); /* Add space above the button */
+    /* Removed align-self: flex-start if container is not flex column,
+       or if global container handles centering. Adjust as needed. */
+}

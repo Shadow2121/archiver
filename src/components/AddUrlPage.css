@@ -1,0 +1,11 @@
+/* src/components/AddUrlPage.css */
+
+/* Remove most styles as they are now in App.css */
+/* Keep only very specific overrides or unique layout adjustments if any */
+
+/* Example: If you want button group to be a specific width */
+/* .add-url-form .button-group {
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+} */
